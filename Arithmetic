@@ -13,7 +13,7 @@ int main() {
 	printf(" add : %d + %d = %d \n", a, b, a + b);
 	printf(" sub : %d - %d = %d \n", a, b, a - b);
 	printf(" mul : %d * %d = %d \n", a, b, a * b);
-
+        printf(" div : %d / %d = %d \n", a, b, a / b);
 	system("pause");
 	return 0;
 }
