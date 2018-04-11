@@ -10,7 +10,12 @@ int main (void) {
     scanf("%d %c %d" , &num1, &a, &num2 );
     
     switch(a){
-    case 'add'
+    case '+' :
         value = num1 + num2;
         printf( "%d %c %d = %d", num1, a, num2, value );
+        break;
+
+    case '-' :
+        value = num1 - num2;
+        pritnf( "%d %c %d = %d", num1, a, num2, value);
         break;
