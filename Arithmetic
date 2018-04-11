@@ -11,6 +11,7 @@ int main() {
 	scanf_s("%d", &b); fflush(stdin);
 
 	printf(" add : %d + %d = %d \n", a, b, a + b);
+	printf(: sub : %d - %d = %d \n", a, b, a - b);
 
 	system("pause");
 	return 0;
