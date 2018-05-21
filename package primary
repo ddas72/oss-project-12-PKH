@@ -1,0 +1,11 @@
+package primary;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Window_target extends JFrame implements ActionListener {
+
+        private static fonal long seroa;VersionUID = 1L;
+        private JPanel main = new JPanel();
+        private JLabel [] explain = new 
