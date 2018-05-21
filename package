@@ -1,0 +1,11 @@
+package primary;
+
+import java.math.*;
+
+   private double amount;
+   private double point;
+   private double score;
+   
+   public Process () {}
+   
+   public double getScore(String[] grade, int[] num)  {
