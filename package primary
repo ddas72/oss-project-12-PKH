@@ -8,4 +8,4 @@ public class Window_target extends JFrame implements ActionListener {
 
         private static fonal long seroa;VersionUID = 1L;
         private JPanel main = new JPanel();
-        private JLabel [] explain = new 
+        private JLabel [] explain = new   
