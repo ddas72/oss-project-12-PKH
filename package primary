@@ -4,8 +4,110 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Window_target extends JFrame implements ActionListener {
+public class Window_avg extends JFrame implements ActionListener { 
 
-        private static fonal long seroa;VersionUID = 1L;
+        private static final long serialVersionUID = 1L;
         private JPanel main = new JPanel();
-        private JLabel [] explain = new   
+        private JLabel[] explain = new JLabel[8];
+        private JLabel[] info = new JLabel[5];
+        private JTextField total_old = new JTextfield(3);
+        private JTextField avg_old = new JTextField(3);
+        private JTextField total_now = new JTextField(3);
+        private JTextField avg_now = new JTextField(3);
+        private JTextField avg = new JTextField(3);
+        private JButton cal = new JButton("계산하기");
+        private Process process = new Process();
+        
+        public Window_avg() {
+        
+        try{
+        ULManager.setLookAndFeel
+("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+     } catch(Exception e) {}
+     
+     cal.setFont(new Font("Gulim", Font.PLAIN, 12));
+     
+     for(int i=0; i<8; i++) {
+        explain[i] = new JLabel();
+        explain[i].setFont(new Font("Gulim", Font.PLAIN, 12));
+     }
+     for(int i=0; i<5; i++) {
+        info[i] = new JLabel();
+        info[i].setFont(new Font("Gulim", Font.PLAIN, 12));
+        }
+        
+        total_old.setFont(new Font("Gulim, Font.PLAIN, 12));
+        avg_old.setFont(new Font("Gulim, Font.PLAIN, 12));
+        total_now.setFont(new Font("Gulim, Font.PLAIN, 12));
+        avg_now.setFont(new Font("Gulim, Font.PLAIN, 12));
+        avg.setFont(new Font("Gulim, Font.PLAIN, 12));
+        
+        explain[0].setText("이번학기에 받은 성적과 직전학기 까지의 성적으로");
+        explain[1].setText("총 평균평점을 구할 수 있습니다.");
+        explain[2].setText("<사용 예>");
+        explain[3].setText("- 지금까지 이수한 학점(80)");
+        explain[4].setText("- 지금까지 평균 평점(3.0)");
+        explain[5].setText("- 이번학기 이수한 학점(21)");
+        explain[6].setText("- 이번학기 평균 평점(3.8)");
+        explain[7].setText(" 위의 경우 지금까지 총 평균 평점은? 3.17");
+        
+        info[0].setText("지금까지 이수한 학점");
+        info[1].setText("지금까지 평균 평점");
+        info[2].setText("이번학기 이수한 학점");
+        info[3].setText("이번학기 평균 평점");
+        info[4].setText("지금까지 총 평균 평점");
+        
+        main.setLayout(new GridBagLayout());
+        
+        main.add(explain[0], new GriBagConstraints(0, 0, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        main.add(explain[1], new GriBagConstraints(0, 1, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        main.add(explain[2], new GriBagConstraints(0, 2, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        main.add(explain[3], new GriBagConstraints(0, 3, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        main.add(explain[4], new GriBagConstraints(0, 4, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        main.add(explain[5], new GriBagConstraints(0, 5, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        main.add(explain[6], new GriBagConstraints(0, 6, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        main.add(explain[7], new GriBagConstraints(0, 7, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(5, 0, 0, 0),0, 0));
+        
+        main.add(info[0], new GriBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(25, 2, 0, 0),0, 0));
+        main.add(info[1], new GriBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        main.add(info[2], new GriBagConstraints(0, 10, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        main.add(info[3], new GriBagConstraints(0, 11, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        main.add(info[4], new GriBagConstraints(0, 12, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        
+        main.add(total_old, new GriBagConstraints(2, 8, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(25, 2, 0, 0),0, 0));
+        main.add(avg_old, new GriBagConstraints(2, 9, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        main.add(total_old, new GriBagConstraints(2, 10, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        main.add(avg_old, new GriBagConstraints(2, 11, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        main.add(avg, new GriBagConstraints(2, 12, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(2, 2, 0, 0),0, 0));
+        main.add(cal, new GriBagConstraints(0, 13, 3, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new lnsets(20, 2, 0, 0),0, 0));
+        
+        avg.setBackground(Color.lightGray);
+        avg.setEditable(false);
+        
+        cal.addActionListener(this);
+        
+        add(main, "Center");
+        
+        Toolkit tk = Toolkit.getDefaultTooklkit();
+        Dimension screenSize = kt.getScreenSize();
+        setTitle("평균평점");
+        setBounds(screenSize.width/2-170, screenSize.height/2-220, 340, 440);
+        setVisible(true);
+        this.setDefaultCloseOperaion(HIDE_ON_CLOSE);
+   }
+        @Override
+        public void action{erformed(ActionEvent e) {
+        try {
+        double total_o = Double.parseDouble(total_old.getText());
+        double avg_o = Double.parseDouble(avg_old.getText());
+        double total_n = Double.ParseDouble(total_now.getText());
+        double avg_n = Double.parseDouble(avg_now.getText());
+        
+        double avgGrade = process.getAvg(total_o, avg_o, tptal_n, avg_n);
+        
+        avg.setText(Double.toString(avgGrade));
+        } catch(Exception ee) {
+           JOptionPane.showMessageDialog(this, "성적을 모두 입력하세요");
+        }
+   }
+}        
