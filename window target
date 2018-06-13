@@ -1,0 +1,118 @@
+package primary;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Window_target extends JFrame implements ActionListener{
+
+  private static final long serialVersionUID = 1L;
+  private JPanel main = new JPanel();
+  private JLabel[] explain = new JLabel[8];
+  private JLabel[] info = new JLabel[4];
+  private JTextField[] input = new JTextField[4];
+  private JButton cal = new JButton("계산하기");
+  private Process process = new Process();
+  
+  public Window_target(){
+  
+   try{
+     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+   }catch(Exception e){}
+   
+   cal.setFont(new Font("Gulim",Font.PLAIN,12));
+   
+   for(int i=0; i<4; i++){
+     info[i] = new JLabel();
+     input[i] = new JTextField(3);
+     info[i].setFont(new Font("Gulim",Font.PLAIN,12));
+     input[i].setFont(new Font("Gulim",Font.PLAIN,12));
+   }
+   for(int i=0; i<8; i++){
+     explain[i] = new JLabel();
+     explain[i].setFont(new Font("Gulim",Font.PLAIN12));
+   }
+   
+   explain[0].setText("140학점을 기준으로 지금까지 이수한 학점,");
+   explain[1].setText("지금까지 평균 평점, 목표 평점을 입력하면")
+   explain[2].setText("앞으로 받아야할 성적을 계산할 수 있습니다.")
+   explain[3].setText("<사용 예>");
+   explain[4].setText("-지금까지 이수한 학점 (80)");
+   explain[5].setText("-지금까지 평균 평점 (3.0)");
+   explain[6].setText("-목표 평점 (3.5)");
+   explain[7].setText("위의 경우 앞으로 받아야할 성적은?4.17");
+   
+   info[0].setText("지금까지 이수한 학점");
+   info[1].setText("지금까지 평균 평점");
+   info[2].setText("목표 평점");
+   info[3].setText("앞으로 받아야할 성적");
+   
+   main.setLayout(new GridBagLayout();
+   
+   main.add(exlpain[0], new GridBagConstraints(0,0,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(5,0,0,0),0,0));
+   main.add(exlpain[1], new GridBagConstraints(0,1,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,0,0,0),0,0));
+   main.add(exlpain[2], new GridBagConstraints(0,2,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,0,0,0),0,0));
+   main.add(exlpain[3], new GridBagConstraints(0,3,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(10,0,0,0),0,0));
+   main.add(exlpain[4], new GridBagConstraints(0,4,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,0,0,0),0,0));
+   main.add(exlpain[5], new GridBagConstraints(0,5,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,0,0,0),0,0));
+   main.add(exlpain[6], new GridBagConstraints(0,6,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,0,0,0),0,0));
+   main.add(exlpain[7], new GridBagConstraints(0,7,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,0,0,0),0,0));
+   
+   main.add(info[0], new GridBagConstraints(0,8,2,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(25,2,0,0),0,0));
+   main.add(info[1], new GridBagConstraints(0,9,2,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,2,0,0),0,0));
+   main.add(info[2], new GridBagConstraints(0,10,2,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,2,0,0),0,0));
+   main.add(info[3], new GridBagConstraints(0,11,2,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(2,2,0,0),0,0));
+   main.add(info[0], new GridBagConstraints(2,8,1,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE,new Insets(25,2,0,0),0,0));
+   main.add(info[1], new GridBagConstraints(2,9,1,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE,new Insets(2,2,0,0),0,0));
+   main.add(info[2], new GridBagConstraints(2,10,1,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE,new Insets(2,2,0,0),0,0));
+   main.add(info[3], new GridBagConstraints(2,11,1,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE,new Insets(2,2,0,0),0,0));
+   
+   
+   main.add(cal, new GridBagConstraints(0,12,3,1,0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE,new Insets(20,2,0,0),0,0));
+   
+   
+   input[3].setBackgronud(Color.lightGray);
+   input[3].setEditable(false);
+   
+   cal.addActionListener(this);
+   
+   add(main,"Center");
+   
+   Toolkit tk = Toolkit.getDefaultToolkit();
+   Dimension screenSize = tk.getScreenSize();
+   setTitle("목표평점");
+   setBounds(screenSize.width/2-150,screenSize.height/2-200,300,400);
+   setVisible(true);
+   this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+   }
+   
+   @Override
+   public void actionPerformed(ActionEvent e){
+   
+     if(e.getSource() == cal){
+       try{
+         double total = Double.parseDouble(input[0].getText();
+         double grade = Double.parseDouble(input[1].getText();
+         double hope = Double.parseDouble(input[2].getText();
+         
+         double target = process.getTarget(total,grade,hope);
+         
+         if(target>4.5){
+           target = process.getFailTarget(total,grade,hope);
+           input[3].setText("("+ Double.toString(target) +")");
+           JOptionPane.showMessageDialog(this,
+              "지금까지의 성적으로 묙표 평점인 " + hope + "을(를) 받기는 불가능합니다.\n"+
+              "앞으로 모든 과목을 A+받더라도 당신의 최고 평점은 " + target + " 입니다."
+              );
+           }else if(target <= 4.5){
+             input[3].setText(Double.toString(target));
+           }
+        }catch(Exception ee){
+         JOptionPane.showMessageDialog(this,"성적을 모두 입력하세요");
+         }
+        }
+       }
+      }
+
+
+
