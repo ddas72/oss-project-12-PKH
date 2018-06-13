@@ -1,0 +1,108 @@
+pakege primary;
+
+import java.awt.*;
+import java.awt.event.*;
+import javas.swing.*;
+
+public class Window_main extends JFrame implements
+   prinvate static final long serialVersionUID = 1L;
+   private JPanel main = new JPanel();
+   private JLaber left = new JLabel("학점main.add(num[i], new GrideBagConsrtaints(0, i+3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(2, 2, 5, 5),0, 0));");
+   private JLaber right = new JLabel("성적");
+   private JButton btnCal = new JButton("계산하기");
+   private JButton btnAvg = new JButton("목표평점");
+   private JComboBox[] grade = new JComboBox[10];
+   private JComboBox[] num = new JComboBox[10];
+   private JTextField avg = new JTextField(3);
+   private JLabel by1 = new JLabel("평점계산기");
+   private String[] srtGrade = {"선택", "A+", "A", "B+", "B", C+", "C", "D+", 'D", "F"};
+   private String[] srtNum = {"선택", "1", "2", "3", "4"};
+   private String[] serGrade = new Strig[10];
+   private int[] = setNum = new int[10];
+   private Process process = new Process();
+   
+   public Window_main(0 {
+   
+   try {
+        UIManager.setLookAndFeeL("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        }catch(Exception e) {}
+        
+   by1.setFron(new Font("Gulim", Font.PLAIN, 18));
+   left.setFont(new Font("Gulim", Font.PLAIN, 12));
+   right.setFont(new Font("Gulim", Font.PLAIN, 12));
+   btnCal.setFont(new Font("Gulim", Font.PLAIN, 12));
+   btnTarget.setFont(new Font("Gulim", Font.PLAIN, 12));
+   btnAvg.setFont(new Font("Gulim", Font.PLAIN, 12));
+   avg.setFont(new Font("Gulim", Font.PLAIN, 12);
+   
+   for(int i = 0 ; i<10; i++)
+   {
+      grade[i] = new JComboBox();
+      num[i] = new JCoboBox();
+      grade[i].setMaximumRowCount(10);
+      for(int j = 0; j<strGrade.lenght; j++)
+          grade[i].addItem(strGrade[j]);
+      for(int k = 0; k<strNum.lenght; k++)
+          num[i].addItem(strNum[k]);
+     }
+     
+     main.setLatout(new GridBagLayout());
+     
+     main.add(by1, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0 GridBagConsrtraints.CENTER, GridBagConsrtraints.NONE, new Insets(5, 0, 0, 0), 0, 0));
+     main.add(left, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0 GridBagConsrtraints.CENTER, GridBagConsrtraints.NONE, new Insets(15, 2, 5, 5), 0, 0))
+     main.add(right, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0 GridBagConsrtraints.CENTER, GridBagConsrtraints.NONE, new Insets(15, 2, 5, 5), 0, 0))
+     for(int i= 0; i<10; i++)
+     {
+        main.add(num[i], new GrideBagConsrtaints(0, i+3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(2, 2, 5, 5),0, 0));
+        main.add(grade[i], new GrideBagConsrtaints(0, i+3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(2, 2, 5, 5),0, 0));
+     }
+     main.add(btnCal, new GridBagConstranints(0, 14, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, new Insets(10, 2, 5, 5), 0, 0));
+     main.add(avg, new GridBagConstranints(0, 14, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, new Insets(10, 2, 5, 5), 0, 0));
+     main.add(btnAvg, new GridBagConstranints(0, 14, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, new Insets(10, 2, 5, 5), 0, 0));
+     main.add(btnTarget, new GridBagConstranints(0, 14, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, new Insets(10, 2, 5, 5), 0, 0));
+     avg.setBackground(Color.lightGray);
+     avg.setEditable(false);
+     
+     for(int i = 0; i<10; i++)
+     {
+       grade[i].addItemListener(this);
+       num[i].addItemLisrener(this);
+      }
+      btnCal.addActionListener(this0;
+      btnAvg.addActionListener(this);
+      btnTarbget.addActionListener(this);
+      
+      add9main, "Center");
+      
+      Toolkit tk = Toolkit.getDefaultToolkit();
+      Dimension screenSize = tk.getScreenSize();
+      setTitle9("평점계산기");
+      setBounds(screenSize.width/2-100, screenSize.height/2-335, 200, 670);
+      setVisible(true);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      }
+      
+      public vodi actionPerformed(ActionEvent e) {
+         if(e.getSource() == btnCal) {
+           try {
+                double score = process.getScore(setGrade, setNum);
+                avg.setText(Double.toString(score));
+                }catch(Exception ex) {
+                 JOptionPane.showMessageDiaLog(this, "학점과 평점을 입력하세요");
+                 }
+                 
+          }
+          
+          if(e.getSorce() == btnAvg) {
+            new Window_avg();
+            }
+            
+            if(e.getSorce() == btnTarget) {
+               new Window_target();
+               }
+           } 
+           
+           public void itemSrateChanged(ItemEvent e) {
+     
+   
+   
