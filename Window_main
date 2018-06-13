@@ -94,15 +94,45 @@ public class Window_main extends JFrame implements
           }
           
           if(e.getSorce() == btnAvg) {
-            new Window_avg();
+            new Window_av
+                   setGrade[1] = (Srring)grade[2].getSelectedItem();
+                if(e.getSorce() == grade[3])
+                   setGrade[1] = (Srring)grade[3].getSelectedItem();
+                if(e.getSorce() == grade[4])
+                   setGrade[1] = (Srring)grade[4].getSelectedItem();
+                if(e.getSorce() == grade[5])
+                   setGrade[1] = (Srring)grade[5].getSelectedItem();
+                if(e.getSorce() == grade[6])
+                   setGrade[1] = (Srring)grade[6].getSelectedItem();
+                 if(e.getSorce() == grade[7])
+                   setGrade[1] = (Srring)grade[7].getSelectedItem();   
+                  if(e.getSorce() == grade[8])
+                   setGrade[1] = (Srring)grade[8].getSelectedItem();   
+                   if(e.getSorce() == grade[9])
+                   setGrade[1] = (Srring)grade[9].getSelectedItem();   
+                
+                if(e.getSorce() == num[0])
+                   setNum[0] = Integer.parseInt((String)num[0].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[1])
+                   setNum[0] = Integer.parseInt((String)num[1].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[2])
+                   setNum[0] = Integer.parseInt((String)num[2].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[3])
+                   setNum[0] = Integer.parseInt((String)num[3].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[4])
+                   setNum[0] = Integer.parseInt((String)num[4].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[5])
+                   setNum[0] = Integer.parseInt((String)num[5].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[6])
+                   setNum[0] = Integer.parseInt((String)num[6].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[7])
+                   setNum[0] = Integer.parseInt((String)num[7].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[8])
+                   setNum[0] = Integer.parseInt((String)num[8].getSelectedItem());getSelectedItem();
+                if(e.getSorce() == num[9])
+                   setNum[0] = Integer.parseInt((String)num[9].getSelectedItem());getSelectedItem();
+                   
             }
             
-            if(e.getSorce() == btnTarget) {
-               new Window_target();
-               }
-           } 
-           
-           public void itemSrateChanged(ItemEvent e) {
-     
-   
-   
+         
+                 
